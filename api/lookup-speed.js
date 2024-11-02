@@ -6,7 +6,7 @@ export async function POST(request) {
   const completion = await openai.chat.completions.create({
     model: "gpt-4o-mini",
     messages: [{
-      "role": "user",
+      "role": "system",
       "content": `What is most commonly agreed to be ${subject}'s top speed? Respond with only a numerical speed in kilometers per hour. Do not include any unit, commas, or words in your response. If you're not certain reply with your best guess, absolute accuracy is not important.`
     }]
   });
