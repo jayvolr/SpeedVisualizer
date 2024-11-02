@@ -93,7 +93,7 @@
     width: 150px;
     /* background-color: #75d766; */
 
-    &:hover {
+    &:hover:not(:disabled) {
       border-color: #44ce60d7;
     }
 
