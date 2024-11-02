@@ -3,9 +3,10 @@
   interface Props {
     duration: number
     speedKph: number
+    id: string
   }
 
-  let { duration, speedKph = $bindable() }: Props = $props()
+  let { duration, speedKph = $bindable(), id }: Props = $props()
 
   let subject: string = $state('')
   let speedStr: string = $state('')
@@ -52,6 +53,7 @@
 </script>
 
 <div class="container">
+  <span class="id" aria-hidden="true">{id}</span>
   <input type="text" onfocus={selectAll} bind:value={subject} onblur={changed} onkeyup={maybeRemoveFocus} placeholder="Subject" use:pullFocus />
   {#if loading}
     <span class="loader-container"><Pulse color="#dbdbdb" size="30" /></span>
@@ -62,6 +64,10 @@
 </div>
 
 <style lang="scss">
+  .id {
+    opacity: 0;
+    position: absolute;
+  }
   .container {
     display: flex;
     width: 100%;

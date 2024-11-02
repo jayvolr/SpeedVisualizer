@@ -21,11 +21,10 @@
 
 <div class="track">
   <div class="runner" style={cssVars}></div>
-  <SmartInput {duration} bind:speedKph />
+  <SmartInput {duration} {id} bind:speedKph />
   <span class="btn-container">
     <button class="remove-btn" onclick={() => removeCallback(id)}>
       <img src="/x.svg" alt="Remove Icon" />
-      {id}
     </button>
   </span>
 </div>
