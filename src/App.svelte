@@ -14,6 +14,7 @@
   }
 
   function remove(id: string) {
+    console.log('removing', id)
     tracks = tracks.filter(t => t !== id)
   }
 </script>

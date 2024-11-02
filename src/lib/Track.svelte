@@ -25,6 +25,7 @@
   <span class="btn-container">
     <button class="remove-btn" onclick={() => removeCallback(id)}>
       <img src="/x.svg" alt="Remove Icon" />
+      {id}
     </button>
   </span>
 </div>
