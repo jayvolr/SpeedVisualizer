@@ -54,7 +54,7 @@
 
 <div class="container">
   <span class="id" aria-hidden="true">{id}</span>
-  <input type="text" onfocus={selectAll} bind:value={subject} onblur={changed} onkeyup={maybeRemoveFocus} placeholder="Subject" use:pullFocus />
+  <input type="text" onfocus={selectAll} bind:value={subject} onblur={changed} onkeyup={maybeRemoveFocus} placeholder="Search..." use:pullFocus />
   {#if loading}
     <span class="loader-container"><Pulse color="#dbdbdb" size="30" /></span>
   {:else}
