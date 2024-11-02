@@ -67,7 +67,9 @@
   .id {
     opacity: 0;
     position: absolute;
+    pointer-events: none;
   }
+
   .container {
     display: flex;
     width: 100%;
