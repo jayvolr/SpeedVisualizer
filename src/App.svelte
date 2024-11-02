@@ -49,10 +49,15 @@
     display: flex;
     flex-direction: row;
     height: 100px;
-    gap: 50px;
+    gap: 30px;
 
     h1 {
       margin: 0;
+    }
+
+    img {
+      position: relative;
+      bottom: 20px;
     }
   }
 
