@@ -1,13 +1,18 @@
 <script lang="ts">
+  import SmartInput from "./SmartInput.svelte";
+
   interface Props {
-    name: string;
-    length: number;
-    speed: number;
+    distance: number;
     running: boolean;
+    id: string;
+    removeCallback: (id: string) => void;
   }
-  let { name, length, speed, running }: Props = $props()
-  let speedMps: number = $derived(speed * (5/18));
-  let duration: number = $derived(length / speedMps);
+
+  let { distance, running, id, removeCallback }: Props = $props()
+
+  let speedKph: number = $state(0)
+  let speedMps: number = $derived(speedKph * (5/18))
+  let duration: number = $derived(distance / speedMps)
   let cssVars: string = $derived(`
     --duration: ${running ? `${duration}s` : '0s'};
     --left: ${running ? '100%' : '0'};
@@ -16,7 +21,12 @@
 
 <div class="track">
   <div class="runner" style={cssVars}></div>
-  <span>{name}  •  {speed.toLocaleString()} KPH  •  {duration.toFixed(1)} seconds</span>
+  <SmartInput {duration} bind:speedKph />
+  <span class="btn-container">
+    <button class="remove-btn" onclick={() => removeCallback(id)}>
+      <img src="/x.svg" alt="Remove Icon" />
+    </button>
+  </span>
 </div>
 
 <style lang="scss">
@@ -28,10 +38,8 @@
     border-radius: 4px;
     position: relative;
 
-    span {
-      white-space: pre;
-      position: relative;
-      top: 20px;
+    &:hover .remove-btn {
+      opacity: 1;
     }
   }
 
@@ -44,5 +52,33 @@
     top: -8px;
     left: var(--left);
     transition: left var(--duration) linear;
+  }
+
+  .btn-container {
+    position: absolute;
+    top: -43px;
+    right: -115px;
+    padding: 30px 50px 30px 210px;
+  }
+
+  .remove-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 0;
+    transition: all 0.25s;
+    opacity: 0;
+
+    &:hover {
+      border-color: rgb(222, 75, 75);
+    }
+
+    img {
+      width: 60%;
+      height: 60%;
+      position: relative;
+      top: 3px;
+      filter: invert(1);
+    }
   }
 </style>
