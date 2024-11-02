@@ -7,7 +7,7 @@ export async function POST(request) {
     model: "gpt-4o-mini",
     messages: [{
       "role": "system",
-      "content": `What is most commonly agreed to be ${subject}'s top speed? Respond with only a numerical speed in kilometers per hour. Do not include any unit, commas, or words in your response. If you're not certain reply with your best guess, absolute accuracy is not important.`
+      "content": `What is most commonly agreed to be the speed or top-speed related to the following subject: "${subject}"? Respond with only a numerical speed in kilometers per hour. Do not include any unit, commas, or words in your response. If you're not certain reply with your best guess, absolute accuracy is not as important as responding with a pure number.`
     }]
   });
 

@@ -50,11 +50,26 @@
   function selectAll(event: Event) {
     (event.target as HTMLInputElement).select()
   }
+
+  function getExample(): string {
+    const examples = [
+      'Car', 'Bike', 'Person', 'Plane', 'Train', 'Boat', 'Fighter Jet', 'Rocket', 'Bullet', 'Sound', 'Light',
+      'Usain Bolt', 'Cheetah', 'Sonic', 'The Flash', 'Speedy Gonzales', 'Road Runner', 'Speed Racer', 'Speedster',
+      'Bullet Train', 'Concorde', 'SR-71 Blackbird', 'F-22 Raptor', 'F-35 Lightning II', 'Peregrine Falcon',
+      'Formula 1 Car', 'Bugatti Veyron', 'Koenigsegg Agera RS', 'Hennessey Venom GT', 'Bloodhound SSC', 'Voyager 1',
+      'New Horizons', 'Apollo 11', 'Space Shuttle', 'ISS', 'Starship', 'Enterprise', 'Millennium Falcon', 'TIE Fighter',
+      'X-Wing', 'Death Star', 'Star Destroyer', 'Borg Cube', 'Warp Drive', 'Hyperdrive', 'Earth\'s Orbit', 'Expansion of The Universe',
+      'Goku', 'Superman', 'Thor', 'Hulk', 'Quicksilver', 'Zoom', 'Reverse Flash', 'Savitar', 'Godspeed', 'Black Flash',
+      'Sonic the Hedgehog', 'Shadow the Hedgehog', 'Silver the Hedgehog', 'Metal Sonic', 'Amy Rose', 'Tails', 'Knuckles',
+      'U-2', 'Land Speed Record', 'Mach 1', 'Mach 2', 'Mach 3', 'Mach 4', 'Mach 5', 'Mach 6', 'Mach 7', 'Mach 8', 'Mach 9', 'Mach 10',
+    ]
+    return examples[Math.floor(Math.random() * examples.length)]
+  }
 </script>
 
 <div class="container">
   <span class="id" aria-hidden="true">{id}</span>
-  <input type="text" onfocus={selectAll} bind:value={subject} onblur={changed} onkeyup={maybeRemoveFocus} placeholder="Search..." use:pullFocus />
+  <input type="text" onfocus={selectAll} bind:value={subject} onblur={changed} onkeyup={maybeRemoveFocus} placeholder={`Subject e.g. "${getExample()}"`} use:pullFocus />
   {#if loading}
     <span class="loader-container"><Pulse color="#dbdbdb" size="30" /></span>
   {:else}
@@ -88,12 +103,16 @@
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
+
+    &::placeholder {
+      text-transform: none;
+    }
   }
 
   .speed-input {
     padding: 10px 3px 10px 10px;
     position: relative;
-    top: 1px;
+    /* top: 1px; */
   }
 
   .speed-input:focus {

@@ -58,7 +58,7 @@
     position: absolute;
     top: -43px;
     right: -115px;
-    padding: 30px 50px 30px 210px;
+    padding: 30px 50px;
   }
 
   .remove-btn {
